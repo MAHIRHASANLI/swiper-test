@@ -1,1 +1,1 @@
-<img src="image/image-proje.pg" alt="Image Proje"/>
+<img src="image/image-proje.png" alt="Image Proje"/>
