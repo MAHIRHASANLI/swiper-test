@@ -20,11 +20,13 @@ const SwiperConfig = () => {
 
 
 const cardWrapper = document.querySelector('.card-wrapper');
-//GET-ALL-DATA
-getAllData().then(async (response) => {
-    cardWrapper.innerHTML = '';
-    response.forEach((doc) => {
-        cardWrapper.innerHTML += ` <div class="card swiper-slide">
+document.addEventListener("DOMContentLoaded", async () => {
+    //GET-ALL-DATA
+    try {
+        await getAllData().then(async (response) => {
+            cardWrapper.innerHTML = '';
+            response.forEach((doc) => {
+                cardWrapper.innerHTML += ` <div class="card swiper-slide">
         <div class="image-content">
             <span class="overlay"></span>
 
@@ -40,6 +42,10 @@ getAllData().then(async (response) => {
             <button class="button">View More</button>
         </div>
     </div>`
-    });
-    await SwiperConfig();
+            });
+            await SwiperConfig();
+        });
+    } catch (error) {
+        console.error(`${error}: Firebase error!!`);
+    }
 });
